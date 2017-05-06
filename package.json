@@ -1,12 +1,9 @@
 {
   "dependencies": {
-    "adm-zip": "^0.4.7",
-    "csv": "^1.1.1",
-    "iconv": "^2.2.3",
     "request": "^2.81.0"
   },
   "name": "alipay-request",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "alipay api sdk request",
   "main": "index.js",
   "devDependencies": {},

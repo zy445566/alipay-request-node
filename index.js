@@ -2,9 +2,6 @@ const request = require('request');
 const fs = require("fs");
 const path = require("path");
 const crypto = require('crypto');
-const adm_zip = require("adm-zip");
-const iconv = require("iconv");
-const csv = require("csv");
 class AlipayRequest
 {
     constructor()
@@ -166,64 +163,6 @@ class AlipayRequest
         return currentdate;
     }
 
-    unZip(fileName,entryPath,index=-1,rename='')
-    {
-        var unzip = new adm_zip(fileName);
-        var zipEntries = unzip.getEntries();
-        return new Promise((resolve,reject)=>{
-            if (index==-1)
-            {
-                unzip.extractAllTo(entryPath, true);
-            } else {
-                unzip.extractEntryTo(zipEntries[index].entryName, entryPath, /*maintainEntryPath*/true, /*overwrite*/true);
-                if (rename==''){
-                    resolve(true);
-                } else {
-                    fs.rename(path.join(entryPath,zipEntries[index].entryName),path.join(entryPath,rename),(err)=>{
-                        if(err)reject(err);
-                        resolve(true);
-                    }); 
-                }
-            }
-        });
-        
-    }
-
-    downFile(fileUrl,saveName)
-    {
-        return new Promise((resolve,reject)=>{
-            let ws = request
-            .get(fileUrl)
-            .on('error', function(err) {
-                reject(err)
-            })
-            .pipe(fs.createWriteStream(saveName));
-            ws.on('close', function() {
-                resolve(true);
-            })
-        });
-        
-        
-    }
-
-    convertCode(strBuf,fromCode,toCode)
-    {
-        
-        let iconvc = new iconv.Iconv(fromCode,toCode);
-        let strUTFBuf = iconvc.convert(strBuf);
-        return  strUTFBuf;
-        
-    }
-
-    csv2Array(str)
-    {
-        return new Promise((resolve,reject)=>{
-            csv.parse(str, function(err, data){
-                if(err)reject(err);
-                resolve(data);
-            });
-        }); 
-    }
 
     getRes()
     {
