@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "csv": "^1.1.1",
+    "iconv": "^2.2.3",
+    "request": "^2.81.0"
+  },
+  "name": "alipay-request",
+  "version": "1.0.0",
+  "description": "alipay api sdk request",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zy445566/alipay-request-node.git"
+  },
+  "keywords": [
+    "alipay",
+    "api",
+    "sdk",
+    "request"
+  ],
+  "author": "zy445566",
+  "license": "MIT"
+}
