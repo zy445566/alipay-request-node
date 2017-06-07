@@ -29,7 +29,7 @@ alipayRequest.setParam('method','alipay.data.dataservice.bill.downloadurl.query'
 alipayRequest.setParam('sign_type','RSA');
 alipayRequest.setParam('version','1.0');
 alipayRequest.setParam('timestamp',alipayRequest.getNowFormatDate());
-//这个必须是最后一个参数
+//这个必须是最后一个参数 sign must be last param
 alipayRequest.setParam('sign',alipayRequest.getSign());
 //------------------Get result-------------------
 alipayRequest.getRes()
